@@ -1,5 +1,5 @@
 # BMI
-This to learn DOM by building a small App that calculates Body Mass Index
+This to learn DOM by building a small App that filters countries
 # Technologies 
 - HTML
 - CSS
@@ -8,4 +8,4 @@ This to learn DOM by building a small App that calculates Body Mass Index
 # Author
 #### Husham
 # DEMO
-[Portfolio](https://husham007.github.io/BMI/)
+[Portfolio](https://husham007.github.io/integrify-filter-countries/)
