@@ -85,7 +85,7 @@ input {
 
 
 
-button {
+button, .btn {
   background: lightseagreen;
   color: white;
 }
