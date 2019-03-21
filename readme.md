@@ -8,4 +8,4 @@ This to learn DOM by building a small App that filters countries
 # Author
 #### Husham
 # DEMO
-[Portfolio](https://husham007.github.io/integrify-filter-countries/)
+[DEMO](https://husham007.github.io/integrify-filter-countries/)
