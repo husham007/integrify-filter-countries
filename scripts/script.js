@@ -86,7 +86,6 @@ function validInputs() {
   if (!input.value) {
     resultElement.className = "result-green";
     resultElement.textContent = "Please Enter in the field to filter";
-
     return false;
   } else if (!input.value.match(/^[A-Za-z]+$/g)) {
     resultElement.className = "result-red";
@@ -105,6 +104,7 @@ const element = (elementType, textContent, className, color) => {
   //element.style.color = '#'+invertHex(String(color).slice(1, 7));
   return element;
 };
+
 function invertHex(hex) {
   return (Number(`0x1${hex}`) ^ 0xFFFFFF).toString(16).substr(1).toUpperCase();
 }
@@ -138,6 +138,7 @@ function resetFlags() {
   resultElement.textContent = null;
   resultElement.className = null;
 }
+
 function randomHexaNumberGenerator() {
   var length = 6;
   var chars = "0123456789ABCDEF";

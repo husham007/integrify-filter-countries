@@ -1,4 +1,4 @@
-# BMI
+# Filter Countries
 This to learn DOM by building a small App that filters countries
 # Technologies 
 - HTML
