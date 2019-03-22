@@ -194,4 +194,6 @@ export const countries = [
     "Zimbabwe"
   ];
 
+  export default countries;
+
   

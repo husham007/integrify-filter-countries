@@ -4,8 +4,7 @@
   License: free to use
 */
 
-import { countries } from "./countries.js";
-
+import countries from "./countries.js";
 
 const startBtn = document.querySelector(".btn-start");
 const searchBtn = document.querySelector(".btn-search");
@@ -18,7 +17,7 @@ let searchWithBtn = false;
 let sortWithBtn = false;
 
 startBtn.addEventListener("click", () => {
-  resetFlags();
+  resetButtonsFlags();
   startBtn.className = "clicked-btn";
   startWithBtn = true;
   if (input.value !== null) {
@@ -33,7 +32,7 @@ startBtn.addEventListener("click", () => {
 });
 
 searchBtn.addEventListener("click", () => {
-  resetFlags();
+  resetButtonsFlags();
   searchBtn.className = "clicked-btn";
   searchWithBtn = true;
   if (input.value !== null) {
@@ -48,7 +47,7 @@ searchBtn.addEventListener("click", () => {
 });
 
 sortBtn.addEventListener("click", () => {
-  resetFlags();
+  resetButtonsFlags();
   input.value = null;
   sortBtn.className = "clicked-btn";
   sortWithBtn = true;
@@ -56,29 +55,28 @@ sortBtn.addEventListener("click", () => {
 });
 
 input.addEventListener("input", () => {
-  let result = [];
-  if (startWithBtn && validInputs()) {
-    result = countries.filter(country => {
-      return country.toUpperCase().startsWith(input.value.toUpperCase());
-    });
+  if (validInputs()) {
+    if (startWithBtn) {
+      let result = countries.filter(country => {
+        return country.toUpperCase().startsWith(input.value.toUpperCase());
+      });
 
-    showCountries(result);
-    resultElement.className = "result-green";
-    resultElement.textContent = `Number of found Countries are: ${
-      result.length
-    }`;
-  }
+      showCountries(result);
+      resultElement.className = "result-green";
+      resultElement.textContent = `Number of found Countries are: ${
+        result.length
+      }`;
+    } else if (searchWithBtn) {
+      let result = countries.filter(country => {
+        return country.toUpperCase().includes(input.value.toUpperCase());
+      });
 
-  if (searchWithBtn && validInputs()) {
-    result = countries.filter(country => {
-      return country.toUpperCase().includes(input.value.toUpperCase());
-    });
-
-    showCountries(result);
-    resultElement.className = "result-green";
-    resultElement.textContent = `Number of found Countries are: ${
-      result.length
-    }`;
+      showCountries(result);
+      resultElement.className = "result-green";
+      resultElement.textContent = `Number of found Countries are: ${
+        result.length
+      }`;
+    }
   }
 });
 
@@ -106,10 +104,11 @@ const element = (elementType, textContent, className, color) => {
 };
 
 function invertHex(hex) {
-  return (Number(`0x1${hex}`) ^ 0xFFFFFF).toString(16).substr(1).toUpperCase();
+  return (Number(`0x1${hex}`) ^ 0xffffff)
+    .toString(16)
+    .substr(1)
+    .toUpperCase();
 }
-
-
 
 const showCountries = countries => {
   countriesDiv.innerHTML = "";
@@ -126,7 +125,7 @@ const showCountries = countries => {
 
 showCountries(countries);
 
-function resetFlags() {
+function resetButtonsFlags() {
   startWithBtn = false;
   searchWithBtn = false;
   sortWithBtn = false;
